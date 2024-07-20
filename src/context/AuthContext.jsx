@@ -2,15 +2,14 @@ import { createContext, useState } from "react";
 
 export const AuthContext = createContext({
     user:{
-        name: false,
-        password: '',
-    },
-    setUser: null,
+        login: '',
+        password: ''
+    }
 })
 
 export const AuthProvider = ({children}) => {
     const [user, setUser] = useState({
-        name: '',
+        login: '',
         password: '',
     })
 
@@ -19,7 +18,7 @@ export const AuthProvider = ({children}) => {
         <AuthContext.Provider
             value={{
                 user,
-                setUser,
+                setUser
             }}
         >
             {children}

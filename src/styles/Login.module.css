@@ -7,12 +7,13 @@ body{
     background-color: #fff;
     border-radius: 1rem;
     height: 100%;
-    width: 50%;
+    width: 30%;
     padding: 20px;
+
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-self: center;
 }
 
