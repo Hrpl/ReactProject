@@ -10,7 +10,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import { AuthProvider } from './context/AuthContext.jsx'
+import { AuthProvider } from './context/AuthContext'
 
 const router = createBrowserRouter([
   {
