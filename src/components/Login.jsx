@@ -1,11 +1,9 @@
 import { useContext, useRef, useState } from "react"
 import { AuthContext } from "../context/AuthContext"
-import { useNavigate } from "react-router-dom"
 import "../styles/Login.css"
 
 import {apiLogin} from '../services/api-services'
 import Cookies from 'js-cookie';
-
 import Modal from 'react-bootstrap/Modal';
 
 export function Login(props){
@@ -15,14 +13,14 @@ export function Login(props){
     const [showPassword, setShowPassword] = useState(false)
     const errorRef = useRef(null)
 
-    const navigate = useNavigate()
-
     async function clickLoginButton(){
         const resp = await apiLogin(user.login, user.password)
         
         if(resp != null) {
-            navigate("/")
             Cookies.set('userName', `${resp.data.name}`, { expires: 1})
+            Cookies.set('userLogin', `${resp.data.login}`, { expires: 1})
+            
+            props.onHide()
         }
         else errorRef.current.hidden = false
     }
@@ -37,7 +35,7 @@ export function Login(props){
             >
 
                 <Modal.Body>
-                    <h2 className="text-center mb-5">Добро пожаловать</h2>
+                    <h2 className="text-center mb-5" style={{color: "#e60023"}}>Добро пожаловать</h2>
                     <div className="d-flex flex-column mx-5">
                         <label className="ms-2"  htmlFor="login"> <b>Логин</b></label>
                         <input value={user.login} className="form-control m-2 rounded-3 border-2" id="login" type="text" 
@@ -60,11 +58,11 @@ export function Login(props){
                                 
                             </span>
                         </span>
+
+                        <section ref={errorRef} className="text-danger ms-2" hidden>
+                            <h6 className="bi bi-exclamation-triangle d-inline"></h6> Неверный логин или пароль
+                        </section>
                     </div>
-                    
-                    <section ref={errorRef} className="text-danger ms-2" hidden>
-                        Неверный логин или пароль
-                    </section>
 
                     <section className="d-flex justify-content-center flex-column">
                         <button className="btn text-white d-flex align-self-center justify-content-center mt-3 mb-0 rounded-5" style={{
@@ -81,7 +79,10 @@ export function Login(props){
                             width: "10vw",
                             backgroundColor: '#cdcdcd'
                         }}
-                        onClick={props.onHide}>Закрыть</button>
+                        onClick={() => {
+                            props.onHide()
+                            setUser({login: "", password: ""})
+                            }}>Закрыть</button>
                     </section>
                     
                 </Modal.Body>
