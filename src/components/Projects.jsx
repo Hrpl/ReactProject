@@ -73,7 +73,7 @@ export function Projects(){
                 
             </div>
             :
-            <h2 className="d-flex justify-content-center mt-5">У вас ещё нет проектов!</h2>
+                <h2 className="d-flex justify-content-center mt-5">У вас ещё нет проектов!</h2>
         :
             <h2 className="d-flex justify-content-center mt-5">Сначало авторизуйтесь!</h2>
         }

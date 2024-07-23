@@ -31,11 +31,12 @@ export function Login(props){
             position: 'initial'}}
         >
             <Modal {...props}
-            aria-labelledby="contained-modal-title-vcenter"
             >
-
+                <Modal.Header className="border-0 justify-content-end">
+                    <h2 className="bi bi-x x m-0 text-center" onClick={() => props.onHide()}></h2>
+                </Modal.Header>
                 <Modal.Body>
-                    <h2 className="text-center mb-5" style={{color: "#e60023"}}>Добро пожаловать</h2>
+                    <h2 className="text-center mb-5" style={{fontWeight: 600}}>Добро пожаловать</h2>
                     <div className="d-flex flex-column mx-5">
                         <label className="ms-2"  htmlFor="login"> <b>Логин</b></label>
                         <input value={user.login} className="form-control m-2 rounded-3 border-2" id="login" type="text" 

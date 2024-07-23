@@ -22,6 +22,17 @@ body{
     padding-left: 0.5rem;
 }
 
+.x{
+  height: 2.5rem;
+  width: 2.5rem;
+
+  font-weight: 800;
+}
+.x:hover{
+  border-radius: 90%;
+  
+  background-color: #ccc;
+}
 
 
 .input-container {
