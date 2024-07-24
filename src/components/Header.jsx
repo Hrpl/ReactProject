@@ -22,7 +22,7 @@ export function Header(){
                 </Link>
             </section>
 
-            <section className="d-flex ">
+            <section className="d-flex mt-2">
                 <Link to="/project" className="mx-3 mt-1 link text-black" style={{
                     fontSize: "1rem",
                     padding: "0.38rem"

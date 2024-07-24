@@ -19,7 +19,7 @@ export function Login(props){
         if(resp != null) {
             Cookies.set('userName', `${resp.data.name}`, { expires: 1})
             Cookies.set('userLogin', `${resp.data.login}`, { expires: 1})
-            
+            location.reload()
             props.onHide()
         }
         else errorRef.current.hidden = false
@@ -38,10 +38,10 @@ export function Login(props){
                 <Modal.Body>
                     <h2 className="text-center mb-5" style={{fontWeight: 600}}>Добро пожаловать</h2>
                     <div className="d-flex flex-column mx-5">
-                        <label className="ms-2"  htmlFor="login"> <b>Логин</b></label>
-                        <input value={user.login} className="form-control m-2 rounded-3 border-2" id="login" type="text" 
+                        <label className="ms-2"  htmlFor="Email"> <b>Email</b></label>
+                        <input value={user.login} className="form-control m-2 rounded-3 border-2" id="Email" type="text" 
                         onChange={(event) => setUser({...user, login: event.target.value})} 
-                        placeholder="Логин"/>
+                        placeholder="Email"/>
                     </div>
                     
                     <div className="d-flex flex-column mx-5">

@@ -22,7 +22,7 @@ export function Projects(){
     return(
         <>
         {userLogin != undefined ?
-            projects != null ?
+            projects != null && projects.length > 0 ?
             <div className="row p-0 m-0 justify-content-between">
                 <h3 className="mt-4">Текущие проекты</h3>
                 

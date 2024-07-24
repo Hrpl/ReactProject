@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
+import {apiCreateNewUser} from '../services/api-services'
 
 import "../styles/Regis.css"
 
@@ -8,15 +9,15 @@ export function Regis(props){
     const [newUser, setNewUser] = useState({
         name: '',
         surname: '',
-        birhday: '',
-        email: '',
+        birthday: '',
+        login: '',
         password: ''
     })
 
     const [showPassword, setShowPassword] = useState(false)
 
     async function clickRegButton(){
-        console.log(newUser)
+        await apiCreateNewUser(newUser)
     }
 
     return(
@@ -31,7 +32,6 @@ export function Regis(props){
                 <Modal.Body>
                     <h2 className="text-center mb-5" style={{fontWeight: 600}}>Добро пожаловать</h2>
 
-                    <form method='post'>
                         <div className="d-flex flex-column mx-5">
                             <label className="ms-2" htmlFor="name"> <b>Имя</b></label>
                             <input value={newUser.name} className="form-control m-2 rounded-3 border-2" id="name" type="text" 
@@ -50,16 +50,16 @@ export function Regis(props){
 
                         <div className="d-flex flex-column mx-5">
                             <label className="ms-2"  htmlFor="birthday"> <b>Дата рождения</b></label>
-                            <input value={newUser.birhday} className="form-control m-2 rounded-3 border-2" id="birthday" type="date" 
-                            onChange={(event) => setNewUser({...newUser, birhday: event.target.value})} 
+                            <input value={newUser.birthday} className="form-control m-2 rounded-3 border-2" id="birthday" type="date" 
+                            onChange={(event) => setNewUser({...newUser, birthday: event.target.value})} 
                             placeholder="Дата рождения"
                             required/>   
                         </div>
 
                         <div className="d-flex flex-column mx-5">
                             <label className="ms-2"  htmlFor="email"> <b>Email</b></label>
-                            <input value={newUser.email} className="form-control m-2 rounded-3 border-2" id="email" type="email" 
-                            onChange={(event) => setNewUser({...newUser, email: event.target.value})} 
+                            <input value={newUser.login} className="form-control m-2 rounded-3 border-2" id="email" type="email" 
+                            onChange={(event) => setNewUser({...newUser, login: event.target.value})} 
                             placeholder="Email"
                             required/>   
                         </div>
@@ -78,7 +78,6 @@ export function Regis(props){
                                     <i className="bi bi-eye "></i> 
                                     :
                                     <i className="bi bi-eye-slash"></i>}
-                                    
                                 </span>
                             </span>
                         </div>
@@ -90,7 +89,7 @@ export function Regis(props){
                                 width: "10vw",
                                 backgroundColor: "#e60023"
                             }}
-                            onClick={clickRegButton}>Войти</button>
+                            onClick={clickRegButton}>Зарегистрироваться</button>
 
                             <button className="btn d-flex align-self-center justify-content-center mt-3 mb-0 rounded-5" style={{
                                 fontWeight: 600,
@@ -100,7 +99,7 @@ export function Regis(props){
                             }}
                             onClick={() => {props.onHide()}}>Закрыть</button>
                         </section>
-                    </form>
+                    
                 </Modal.Body>
 
             </Modal>
