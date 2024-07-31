@@ -53,9 +53,10 @@ export function Login(props){
                             
                             <span onClick={() => setShowPassword(!showPassword)} className="toggle-password">
                                 {showPassword ? 
-                                <i className="bi bi-eye "></i> 
+                                
+                                <i className="bi bi-eye-slash"></i>
                                 :
-                                <i className="bi bi-eye-slash"></i>}
+                                <i className="bi bi-eye "></i> }
                                 
                             </span>
                         </span>
